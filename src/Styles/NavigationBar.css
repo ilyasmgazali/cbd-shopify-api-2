@@ -1,0 +1,61 @@
+/* Whole Nav */
+.nav{
+    display: flex;
+    flex-flow: column;
+    top: 0%;
+    position: sticky;
+    background-color: green;
+    padding: 1rem;
+    margin: auto;
+    max-width: 1280px;
+}
+
+/* ------------ Top ------------ */
+.nav-top{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+}
+.nav-top-left{
+    display: flex;
+    align-items: center;
+}
+.nav-tleft-link{
+    margin-left: 0.5rem;
+}
+.nav-top-right{
+    display: flex;
+    align-items: center;
+}
+.nav-tright-icon{
+    margin-right: 0.5rem;
+}
+
+/* ------------ Bottom ------------ */
+.nav-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+/* Bottom Left */
+.nav-bottom-left{
+    display: flex;
+    align-items: center;
+}
+.nav-bleft-companyname{
+    display: flex;
+}
+.nav-bleft-cbdcategory{
+    display: flex;
+}
+/* Bottom Right */
+.nav-bottom-right{
+    display: flex;
+}
+.nav-bright-search{
+    display: flex;
+    align-items: center;
+}
+.nav-bright-icons{
+    display: flex;
+    align-items: center;
+}

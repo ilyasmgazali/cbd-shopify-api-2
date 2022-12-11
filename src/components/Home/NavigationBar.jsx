@@ -1,6 +1,6 @@
 import React from 'react'
 //import stylesheet
-import Navigation from '../../Styles/Navigation'
+import '../../Styles/NavigationBar.css'
 //import icons
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
@@ -21,10 +21,10 @@ export default function NavigationBar() {
             {/** Navigation top-left language section*/}
             <div className="nav-top-left">
                 <LanguageIcon fontSize="medium"/>
-                <h4>English / United Kingdom</h4>
+                <h4 className="nav-tleft-link">English / United Kingdom</h4>
             </div>
             <div className="nav-top-right">
-                <HelpIcon/>
+                <HelpIcon className="nav-tright-icon"/>
                 <h4>Customer Care</h4>
             </div>
         </div>
@@ -47,11 +47,14 @@ export default function NavigationBar() {
                     <SearchIcon fontSize="medium"/>
                     <h4>Search</h4>
                 </div>
+                <div className='nav-bright-icons'>
                     {/* <AccountCircleIcon fontSize="large"/>*/}
                     <FavoriteIcon/>
                     <PermIdentityIcon fontSize="medium"/>
                     <ShoppingCartIcon fontSize="medium"/>
                     <Avatar src="" alt="user" sx={{ width: 28, height: 28}}/>   
+                </div>
+                    
             </div> 
         </div>
     </nav>
