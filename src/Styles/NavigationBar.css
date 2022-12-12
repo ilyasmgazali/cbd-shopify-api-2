@@ -3,9 +3,10 @@
     display: flex;
     flex-flow: column;
     top: 0%;
+    z-index: 990;
     position: sticky;
-    background-color: green;
-    padding: 1rem;
+    background-color: white;
+    
     margin: auto;
     max-width: 1280px;
 }
@@ -15,6 +16,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid lightgray;
+    padding: 1rem;
 }
 .nav-top-left{
     display: flex;
@@ -35,6 +37,7 @@
 .nav-bottom{
     display: flex;
     justify-content: space-between;
+    padding: 0rem 1rem;
 }
 /* Bottom Left */
 .nav-bottom-left{
@@ -44,8 +47,13 @@
 .nav-bleft-companyname{
     display: flex;
 }
+.xyz{
+    margin: 1rem;
+}
 .nav-bleft-cbdcategory{
     display: flex;
+
+    
 }
 /* Bottom Right */
 .nav-bottom-right{

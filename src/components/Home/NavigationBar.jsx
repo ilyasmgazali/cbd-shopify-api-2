@@ -36,9 +36,9 @@ export default function NavigationBar() {
                     <h2>CBD JOINT</h2>
                 </div>
                 <div className="nav-bleft-cbdcategory">
-                    <h4>Vape</h4>
-                    <h4>Liquid</h4>
-                    <h4>Oil</h4>
+                    <h4 className="xyz">Vape</h4>
+                    <h4 className="xyz">Liquid</h4>
+                    <h4 className="xyz">Oil</h4>
                 </div>
             </div> 
             {/** Navigation bottom-right section*/}
@@ -46,15 +46,13 @@ export default function NavigationBar() {
                 <div className='nav-bright-search'>
                     <SearchIcon fontSize="medium"/>
                     <h4>Search</h4>
-                </div>
+                </div> 
                 <div className='nav-bright-icons'>
                     {/* <AccountCircleIcon fontSize="large"/>*/}
                     <FavoriteIcon/>
-                    <PermIdentityIcon fontSize="medium"/>
                     <ShoppingCartIcon fontSize="medium"/>
                     <Avatar src="" alt="user" sx={{ width: 28, height: 28}}/>   
                 </div>
-                    
             </div> 
         </div>
     </nav>
