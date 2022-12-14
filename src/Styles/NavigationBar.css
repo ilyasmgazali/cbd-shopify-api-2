@@ -21,10 +21,14 @@
 .nav-top-left{
     display: flex;
     align-items: center;
+    font-weight: 400;
 }
 .nav-tleft-link{
     margin-left: 0.5rem;
+    font-weight: 400;
 }
+/* Same styles can be done this way */
+.nav-top-left, 
 .nav-top-right{
     display: flex;
     align-items: center;
@@ -32,38 +36,53 @@
 .nav-tright-icon{
     margin-right: 0.5rem;
 }
+.nav-tright-link{
+    font-weight: 400;
+}
 
 /* ------------ Bottom ------------ */
 .nav-bottom{
     display: flex;
     justify-content: space-between;
+    /* align-items: center; Not Needed?*/ 
     padding: 0rem 1rem;
-}
-/* Bottom Left */
-.nav-bottom-left{
-    display: flex;
-    align-items: center;
-}
-.nav-bleft-companyname{
-    display: flex;
-}
-.xyz{
-    margin: 1rem;
-}
-.nav-bleft-cbdcategory{
-    display: flex;
-
-    
 }
 /* Bottom Right */
 .nav-bottom-right{
     display: flex;
+    align-items: center;
 }
 .nav-bright-search{
     display: flex;
     align-items: center;
 }
+.nav-bright-link{
+    font-weight: 400;
+}
 .nav-bright-icons{
     display: flex;
     align-items: center;
+}
+/* Bottom Left */
+.nav-bottom-left{
+    display: flex;
+    align-items: center; 
+}
+.nav-bleft-companyname{
+    display: flex;
+}
+.nav-bleft-links{
+    margin: 1rem;
+    font-weight: 400;
+}
+.nav-bleft-cbdcategory{
+    display: flex;    
+}
+.nav-bright-link,
+.nav-bright-seperator{
+    margin-right: 1rem;
+}
+.nav-bright-seperator{
+    margin-left: 1rem;
+    font-size: larger;
 }
