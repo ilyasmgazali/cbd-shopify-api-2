@@ -45,8 +45,8 @@ export default function NavigationBar() {
             <div className='nav-bottom-right'>
                 <div className='nav-bright-search'>
                     <SearchIcon fontSize="medium"/>
-                    <h4 className='nav-bright-link'>Search</h4>
-                </div> 
+                    <h4 className='nav-bright-searchText'>Search</h4>
+                </div>
                 <div className='nav-bright-icons'>
                     {/* <AccountCircleIcon fontSize="large"/>*/}
                     <h4 className='nav-bright-seperator'> | </h4>
