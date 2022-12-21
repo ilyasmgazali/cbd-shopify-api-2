@@ -14,15 +14,31 @@ function App() {
 
   const addPosts = async (title, headers) => {
     try {
-      await fetch('https://cbd-test-2.myshopify.com/admin/api/2021-07/shop.json', {
+      await fetch('https://cbd-test-2.myshopify.com/api/2022-10/graphql.json', {
       //await fetch('https://jsonplaceholder.typicode.com/posts', {
       //await fetch('https://cbd-test-2.myshopify.com/admin/api/2021-07/shop.json', {
-        method: 'GET',
+        method: 'POST',
+        body: JSON.stringify({
+          query: `
+          query SomeQuery {
+            
+              products(first: 3) {
+                edges {
+                  node {
+                    id
+                    title
+                  }
+                }
+              }
+            
+          }`,
+        variables: {},
+       }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': 'true',
-            'X-Shopify-Access-Token': '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',
+            'X-Shopify-Access-Token': '68c24e53308d8b57726ea2cf20f62dd2',
           },
         }, [])
       }catch (e) {
