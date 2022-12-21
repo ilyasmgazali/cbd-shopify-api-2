@@ -19,25 +19,20 @@ function App() {
       //await fetch('https://cbd-test-2.myshopify.com/admin/api/2021-07/shop.json', {
         method: 'POST',
         body: JSON.stringify({
-          query: `
-          query SomeQuery {
-            
-              products(first: 3) {
-                edges {
-                  node {
-                    id
-                    title
-                  }
+          query: `{
+            products(first: 3) {
+              edges {
+                node {
+                  id
+                  title
                 }
               }
-            
-          }`,
-        variables: {},
-       }),
+            }
+          }`
+        }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': 'true',
+            'Content-type': 'application/graphql; charset=UTF-8',
+          
             'X-Shopify-Storefront-Access-Token': '68c24e53308d8b57726ea2cf20f62dd2',
           },
         }, [])
@@ -45,9 +40,11 @@ function App() {
         console.log("error code below")
         console.log(e)
     }
-}
+  }
+  addPosts();
   useEffect(() => {
     console.log(addPosts());
+    addPosts()
   }, [])
   return (
     <div className="App">
