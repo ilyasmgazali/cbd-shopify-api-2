@@ -18,11 +18,6 @@ function App() {
       //await fetch('https://jsonplaceholder.typicode.com/posts', {
       //await fetch('https://cbd-test-2.myshopify.com/admin/api/2021-07/shop.json', {
         method: 'GET',
-        body: JSON.stringify({
-          title: title,
-          body: body,
-          userId: Math.random().toString(36).slice(2),
-       }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
             'Access-Control-Allow-Origin': '*',
