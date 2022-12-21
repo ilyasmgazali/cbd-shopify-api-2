@@ -38,7 +38,7 @@ function App() {
             'Content-type': 'application/json; charset=UTF-8',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': 'true',
-            'X-Shopify-Access-Token': '68c24e53308d8b57726ea2cf20f62dd2',
+            'X-Shopify-Storefront-Access-Token': '68c24e53308d8b57726ea2cf20f62dd2',
           },
         }, [])
       }catch (e) {
