@@ -4,52 +4,43 @@ import SearchIcon from '@mui/icons-material/Search';
 import NavigationBar from './components/Home/NavigationBar';
 import Home from './Pages/Home'
 //import react and useEffect
-import React, {useState, useEffect} from 'react';
 
-//2initialising a client to return translated content
+import { ListItemSecondaryAction } from '@mui/material';
+
+import React, { useEffect, useState } from 'react';
+import Client  from 'shopify-buy';
+
+const shopify = new Client({
+  domain: 'your-shop-name.myshopify.com',
+  storefrontAccessToken: 'your-access-token'
+});
+
 function App() {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [headers, setheaders] = useState('');
+  const [products, setProducts] = useState([]);
 
-  const addPosts = async (title, headers) => {
-    try {
-      await fetch('https://cbd-test-2.myshopify.com/api/2022-10/graphql.json', {
-      //await fetch('https://jsonplaceholder.typicode.com/posts', {
-      //await fetch('https://cbd-test-2.myshopify.com/admin/api/2021-07/shop.json', {
-        method: 'POST',
-        body: JSON.stringify({
-          query: `{
-            products(first: 3) {
-              edges {
-                node {
-                  id
-                  title
-                }
-              }
-            }
-          }`
-        }),
-        headers: {
-            'Content-type': 'application/graphql; charset=UTF-8',
-          
-            'X-Shopify-Storefront-Access-Token': '68c24e53308d8b57726ea2cf20f62dd2',
-          },
-        }, [])
-      }catch (e) {
-        console.log("error code below")
-        console.log(e)
-    }
-  }
-  addPosts();
   useEffect(() => {
-    console.log(addPosts());
-    addPosts()
-  }, [])
+    async function fetchData() {
+      try {
+        const response = await shopify.product.fetchAll();
+        setProducts(response);
+      } catch(error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <Home/>
+    <div>
+      {products.map((product) => (
+        <div key={product.id}>
+          <h2>{product.title}</h2>
+          <p>{product.description}</p>
+        </div>
+      ))}
     </div>
   );
 }
+
 export default App;
