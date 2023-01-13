@@ -14,18 +14,18 @@ function App() {
   const [headers, setheaders] = useState('');
   const [posts, setPosts] = useState([]); //store product data from api
 
-  console.log(process.env.PUBLIC_MY_API_URL)
-  console.log(process.env.STOREFRONT_API_KEY)
+  //console.log(process.env.PUBLIC_MY_API_URL)
+  //console.log(process.env.STOREFRONT_API_KEY)
 
   //first 20 products
   const query = `{ products(first: 20) { edges { node { title description images(first: 1) { edges { node { altText transformedSrc(maxWidth: 400, maxHeight: 400) } } } } } } }`; 
   const apiCall = async (title, body, headers) => {
     try {
-      await fetch(process.env.PUBLIC_MY_API_URL,
+      await fetch(process.env.REACT_APP_PUBLIC_MY_API_URL,
         {
           method: 'POST', 
           headers: { 'Content-Type': 'application/graphql', 
-                        'X-Shopify-Storefront-Access-Token': process.env.STOREFRONT_API_KEY 
+                        'X-Shopify-Storefront-Access-Token': process.env.REACT_APP_STOREFRONT_API_KEY 
                       },
           body: query
         } 
