@@ -4,43 +4,77 @@ import SearchIcon from '@mui/icons-material/Search';
 import NavigationBar from './components/Home/NavigationBar';
 import Home from './Pages/Home'
 //import react and useEffect
-
+import React, {useState, useEffect} from 'react';
 import { ListItemSecondaryAction } from '@mui/material';
 
-import React, { useEffect, useState } from 'react';
-import Client  from 'shopify-buy';
-
-const shopify = new Client({
-  domain: 'your-shop-name.myshopify.com',
-  storefrontAccessToken: 'your-access-token'
-});
-
+//2initialising a client to return translated content
 function App() {
-  const [products, setProducts] = useState([]);
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [headers, setheaders] = useState('');
+  const [posts, setPosts] = useState([]); //store product data from api
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await shopify.product.fetchAll();
-        setProducts(response);
-      } catch(error) {
-        console.error(error);
-      }
+  console.log(process.env.PUBLIC_MY_API_URL)
+  console.log(process.env.STOREFRONT_API_KEY)
+
+  //first 20 products
+  const query = `{ products(first: 20) { edges { node { title description images(first: 1) { edges { node { altText transformedSrc(maxWidth: 400, maxHeight: 400) } } } } } } }`; 
+  const apiCall = async (title, body, headers) => {
+    try {
+      await fetch(process.env.PUBLIC_MY_API_URL,
+        {
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/graphql', 
+                        'X-Shopify-Storefront-Access-Token': process.env.STOREFRONT_API_KEY 
+                      },
+          body: query
+        } 
+      )
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data)
+        setPosts(data) //useState updated
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
+    }catch (e) {
+        console.log("error code below")
+        console.log(e)
     }
+  }
+  useEffect(() => {
+    console.log("log: useEffect has run")
+    apiCall() 
+  }, [])
+  console.log("useState is here: postsssssss")
+  console.log(posts)
 
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      {products.map((product) => (
-        <div key={product.id}>
-          <h2>{product.title}</h2>
-          <p>{product.description}</p>
-        </div>
-      ))}
-    </div>
+  const jsonObject = posts;
+  console.log("JSON iterator")  
+    console.log("inside try")
+    console.log(jsonObject.data?.products.edges.forEach(element => {
+      console.log(element.node.title)
+    }))
+    console.log(jsonObject.data?.products.edges.map(n => '<li>' + n.node.title + '<li>'))
+    //const print =  jsonObject.data?.products.edges.map(n => n.node.title )
+    //const myObject = jsonObject?.data.products.edges;
+  return (   
+    <div className="App">
+      <Home/>
+      <div>
+        <h1>Products Page</h1>
+        <ul>
+          {jsonObject.data?.products.edges.map(item => 
+          <li key={item.node.title}>
+            <h2>{item.node.title}</h2>
+            <p>{item.node.description}</p>
+            <img src={item.node.images.edges[0].node.transformedSrc}></img>
+          </li>)}
+        </ul>
+      </div>
+    
+  </div>
   );
 }
-
 export default App;
